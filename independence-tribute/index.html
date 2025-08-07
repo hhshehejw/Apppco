@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Interactive Independence Day Tribute - Celebrating 79th Independence Day of India with personalized greetings, heritage gallery, and patriotic experiences">
+    <meta name="keywords" content="Independence Day, India, Freedom, Patriotic, Interactive, 15 August, Jai Hind">
+    <meta name="author" content="EduSharma">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="🇮🇳 Interactive Independence Day Tribute 2025">
+    <meta property="og:description" content="Join the digital celebration of India's 79th Independence Day with personalized greetings, heritage gallery, and interactive experiences">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="assets/images/independence-day-share.jpg">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="🇮🇳 Interactive Independence Day Tribute 2025">
+    <meta name="twitter:description" content="Celebrating India's freedom with cutting-edge digital experiences">
+    
+    <title>🇮🇳 Interactive Independence Day Tribute 2025 | EduSharma</title>
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="style.css" as="style">
+    <link rel="preload" href="script.js" as="script">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/images/flag-favicon.svg">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-flag">
+            <div class="flag-stripe saffron"></div>
+            <div class="flag-stripe white">
+                <div class="ashoka-chakra">
+                    <div class="chakra-center"></div>
+                    <div class="chakra-spokes"></div>
+                </div>
+            </div>
+            <div class="flag-stripe green"></div>
+        </div>
+        <div class="loading-text">
+            <h2>स्वतंत्रता दिवस</h2>
+            <p>Loading Independence Day Tribute...</p>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Welcome Modal -->
+    <div id="welcomeModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🇮🇳 Join the Celebration</h2>
+                <p>Welcome to India's Digital Independence Day Tribute</p>
+            </div>
+            <form id="nameForm" class="name-form">
+                <div class="input-group">
+                    <label for="userName">Enter Your Name:</label>
+                    <input type="text" id="userName" name="userName" placeholder="Your Name" required autocomplete="given-name">
+                </div>
+                <button type="submit" class="cta-button">
+                    <span>Begin Journey</span>
+                    <div class="button-ripple"></div>
+                </button>
+            </form>
+            <div class="modal-footer">
+                <p>Your name will be used for personalized greetings throughout your journey</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Voice Command Indicator -->
+    <div id="voiceIndicator" class="voice-indicator">
+        <div class="voice-animation"></div>
+        <p>Say "Jai Hind" to activate celebrations!</p>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="assets/images/edusharma-logo.png" alt="EduSharma" class="logo-img">
+                <span class="logo-text">EduSharma</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#hero" data-section="hero">Home</a></li>
+                <li><a href="#timeline" data-section="timeline">Timeline</a></li>
+                <li><a href="#gallery" data-section="gallery">Heritage</a></li>
+                <li><a href="#quiz" data-section="quiz">Quiz</a></li>
+                <li><a href="#unity" data-section="unity">Unity</a></li>
+                <li><a href="#ceremony" data-section="ceremony">Ceremony</a></li>
+            </ul>
+            <div class="nav-controls">
+                <button id="audioToggle" class="control-btn" aria-label="Toggle Audio">
+                    <span class="audio-icon">🎵</span>
+                </button>
+                <button id="shareBtn" class="control-btn" aria-label="Share">
+                    <span class="share-icon">📱</span>
+                </button>
+                <button class="nav-toggle" aria-label="Toggle Navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="hero-background">
+                <div class="particle-rain"></div>
+                <div class="flag-wave"></div>
+            </div>
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="greeting-text">Happy 79th Independence Day,</span>
+                    <span id="personalGreeting" class="personal-name">India!</span>
+                </h1>
+                <p class="hero-subtitle">स्वतंत्रता दिवस की हार्दिक शुभकामनाएं</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="79">0</span>
+                        <span class="stat-label">Years of Freedom</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="1400000000">0</span>
+                        <span class="stat-label">Proud Indians</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="28">0</span>
+                        <span class="stat-label">States</span>
+                    </div>
+                </div>
+                <div class="hero-actions">
+                    <button id="flagHoistBtn" class="primary-btn">
+                        <span>🚩 Hoist Flag</span>
+                    </button>
+                    <button id="exploreBtn" class="secondary-btn">
+                        <span>🗺️ Explore Heritage</span>
+                    </button>
+                </div>
+            </div>
+            <div class="floating-elements">
+                <div class="floating-chakra"></div>
+                <div class="floating-dove"></div>
+                <div class="floating-lotus"></div>
+            </div>
+        </section>
+
+        <!-- Audio Player -->
+        <section id="audioPlayer" class="audio-player">
+            <div class="player-container">
+                <div class="player-controls">
+                    <button id="prevTrack" class="player-btn">⏮️</button>
+                    <button id="playPause" class="player-btn play-btn">▶️</button>
+                    <button id="nextTrack" class="player-btn">⏭️</button>
+                </div>
+                <div class="track-info">
+                    <div class="track-title">Vande Mataram</div>
+                    <div class="track-artist">Instrumental</div>
+                </div>
+                <div class="volume-control">
+                    <input type="range" id="volumeSlider" min="0" max="100" value="70" class="volume-slider">
+                </div>
+                <div class="audio-visualizer">
+                    <canvas id="visualizerCanvas" width="200" height="60"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Timeline -->
+        <section id="timeline" class="timeline-section">
+            <div class="section-header">
+                <h2>🕒 Interactive Independence Timeline</h2>
+                <p>Journey through India's path to freedom</p>
+                <div class="timeline-filters">
+                    <button class="filter-btn active" data-filter="all">All Events</button>
+                    <button class="filter-btn" data-filter="pre-1900">Pre-1900</button>
+                    <button class="filter-btn" data-filter="early-1900">1900-1920</button>
+                    <button class="filter-btn" data-filter="freedom-struggle">1920-1947</button>
+                    <button class="filter-btn" data-filter="post-independence">Post-1947</button>
+                </div>
+            </div>
+            <div class="timeline-container">
+                <div class="timeline-table-wrapper">
+                    <table class="timeline-table">
+                        <thead>
+                            <tr>
+                                <th>Year</th>
+                                <th>Event</th>
+                                <th>Hero</th>
+                                <th>Impact</th>
+                            </tr>
+                        </thead>
+                        <tbody id="timelineTableBody">
+                            <!-- Timeline data will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Heritage Gallery -->
+        <section id="gallery" class="gallery-section">
+            <div class="section-header">
+                <h2>🏛️ Virtual Heritage Gallery</h2>
+                <p>Explore India's monuments and freedom fighters</p>
+            </div>
+            <div class="gallery-grid" id="heritageGallery">
+                <!-- Gallery items will be populated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Interactive Quiz -->
+        <section id="quiz" class="quiz-section">
+            <div class="section-header">
+                <h2>🧠 "Did You Know?" Independence Quiz</h2>
+                <p>Test your knowledge of India's freedom struggle</p>
+            </div>
+            <div class="quiz-container">
+                <div class="quiz-progress">
+                    <div class="progress-track">
+                        <div class="progress-fill" id="quizProgress"></div>
+                    </div>
+                    <span class="question-counter">Question <span id="currentQ">1</span> of <span id="totalQ">10</span></span>
+                </div>
+                <div class="quiz-card">
+                    <div class="question-container">
+                        <h3 id="questionText">Loading question...</h3>
+                        <div class="options-container" id="optionsContainer">
+                            <!-- Options will be populated by JavaScript -->
+                        </div>
+                    </div>
+                    <div class="quiz-actions">
+                        <button id="nextQuestion" class="next-btn" disabled>Next Question</button>
+                    </div>
+                </div>
+                <div class="quiz-score">
+                    <span>Score: <span id="currentScore">0</span>/<span id="maxScore">10</span></span>
+                </div>
+            </div>
+            <div class="quiz-results" id="quizResults" style="display: none;">
+                <h3>Quiz Completed!</h3>
+                <div class="final-score">
+                    <span id="finalScore">0</span>/<span id="finalTotal">10</span>
+                </div>
+                <div class="score-message" id="scoreMessage"></div>
+                <div class="quiz-share">
+                    <button id="shareScore" class="share-btn">Share Your Score</button>
+                    <button id="retakeQuiz" class="retry-btn">Retake Quiz</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Progress Dashboard -->
+        <section id="dashboard" class="dashboard-section">
+            <div class="section-header">
+                <h2>📊 India Progress Dashboard</h2>
+                <p>Celebrating 79 years of growth and development</p>
+            </div>
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <div class="card-icon">🗓️</div>
+                    <div class="card-content">
+                        <h3>Years of Freedom</h3>
+                        <div class="counter" data-count="79">0</div>
+                    </div>
+                </div>
+                <div class="dashboard-card">
+                    <div class="card-icon">🏛️</div>
+                    <div class="card-content">
+                        <h3>States & UTs</h3>
+                        <div class="counter" data-count="36">0</div>
+                    </div>
+                </div>
+                <div class="dashboard-card">
+                    <div class="card-icon">🌐</div>
+                    <div class="card-content">
+                        <h3>Official Languages</h3>
+                        <div class="counter" data-count="22">0</div>
+                    </div>
+                </div>
+                <div class="dashboard-card">
+                    <div class="card-icon">👥</div>
+                    <div class="card-content">
+                        <h3>Population (Billions)</h3>
+                        <div class="counter" data-count="1.4">0</div>
+                    </div>
+                </div>
+                <div class="dashboard-card">
+                    <div class="card-icon">📚</div>
+                    <div class="card-content">
+                        <h3>Literacy Rate (%)</h3>
+                        <div class="counter" data-count="77.7">0</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-progress="77.7"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="dashboard-card">
+                    <div class="card-icon">💰</div>
+                    <div class="card-content">
+                        <h3>GDP Rank</h3>
+                        <div class="counter" data-count="5">0</div>
+                        <small>World's 5th largest economy</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Flag Hoisting Ceremony -->
+        <section id="ceremony" class="ceremony-section">
+            <div class="section-header">
+                <h2>🎆 Virtual Flag Hoisting Ceremony</h2>
+                <p>Experience the pride of our national flag</p>
+            </div>
+            <div class="ceremony-container">
+                <div class="flag-pole">
+                    <div class="pole"></div>
+                    <div class="flag" id="ceremonialFlag">
+                        <div class="flag-stripe saffron"></div>
+                        <div class="flag-stripe white">
+                            <div class="ashoka-chakra">
+                                <div class="chakra-spokes"></div>
+                            </div>
+                        </div>
+                        <div class="flag-stripe green"></div>
+                    </div>
+                </div>
+                <div class="ceremony-controls">
+                    <button id="startCeremony" class="ceremony-btn">
+                        <span>🚩 Start Flag Hoisting</span>
+                    </button>
+                    <button id="playAnthem" class="ceremony-btn">
+                        <span>🎵 Play National Anthem</span>
+                    </button>
+                </div>
+                <div class="fireworks-container" id="fireworksContainer"></div>
+            </div>
+            <audio id="nationalAnthem" preload="auto">
+                <source src="assets/audio/jana-gana-mana.mp3" type="audio/mpeg">
+            </audio>
+        </section>
+
+        <!-- Unity in Diversity -->
+        <section id="unity" class="unity-section">
+            <div class="section-header">
+                <h2>🌍 Unity in Diversity</h2>
+                <p>Celebrating India's rich cultural tapestry</p>
+            </div>
+            <div class="unity-container">
+                <div class="languages-grid">
+                    <h3>Independence Day Greetings</h3>
+                    <div class="language-cards" id="languageCards">
+                        <!-- Language cards will be populated by JavaScript -->
+                    </div>
+                </div>
+                <div class="cultural-showcase">
+                    <h3>Cultural Heritage</h3>
+                    <div class="culture-grid" id="cultureGrid">
+                        <!-- Cultural items will be populated by JavaScript -->
+                    </div>
+                </div>
+                <div class="achievements-grid">
+                    <h3>Modern India Achievements</h3>
+                    <div class="achievement-cards" id="achievementCards">
+                        <!-- Achievement cards will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Sharing Hub -->
+        <section id="sharing" class="sharing-section">
+            <div class="section-header">
+                <h2>📱 Share the Celebration</h2>
+                <p>Spread the joy of Independence Day</p>
+            </div>
+            <div class="sharing-container">
+                <div class="share-options">
+                    <button class="share-btn whatsapp" data-platform="whatsapp">
+                        <span class="share-icon">📱</span>
+                        <span>WhatsApp</span>
+                    </button>
+                    <button class="share-btn facebook" data-platform="facebook">
+                        <span class="share-icon">📘</span>
+                        <span>Facebook</span>
+                    </button>
+                    <button class="share-btn twitter" data-platform="twitter">
+                        <span class="share-icon">🐦</span>
+                        <span>Twitter</span>
+                    </button>
+                    <button class="share-btn instagram" data-platform="instagram">
+                        <span class="share-icon">📷</span>
+                        <span>Instagram</span>
+                    </button>
+                    <button class="share-btn copy-link" data-platform="copy">
+                        <span class="share-icon">🔗</span>
+                        <span>Copy Link</span>
+                    </button>
+                </div>
+                <div class="share-preview">
+                    <div class="preview-card">
+                        <div class="preview-image">
+                            <img src="assets/images/share-preview.jpg" alt="Share Preview">
+                        </div>
+                        <div class="preview-content">
+                            <h4>🇮🇳 Interactive Independence Day Tribute 2025</h4>
+                            <p id="sharePreviewText">Join me in celebrating India's 79th Independence Day!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>EduSharma</h3>
+                <p>Celebrating India's rich heritage through innovative digital experiences</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">📘</a>
+                    <a href="#" aria-label="Twitter">🐦</a>
+                    <a href="#" aria-label="Instagram">📷</a>
+                    <a href="#" aria-label="YouTube">📺</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#timeline">Timeline</a></li>
+                    <li><a href="#gallery">Heritage</a></li>
+                    <li><a href="#quiz">Quiz</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Celebration</h4>
+                <ul>
+                    <li><a href="#ceremony">Flag Ceremony</a></li>
+                    <li><a href="#unity">Unity in Diversity</a></li>
+                    <li><a href="#sharing">Share Joy</a></li>
+                    <li><a href="#dashboard">Progress</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p>📧 info@edusharma.com</p>
+                <p>📞 +91 98765 43210</p>
+                <p>🌐 www.edusharma.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 EduSharma. Made with ❤️ for India. Jai Hind! 🇮🇳</p>
+            <div class="footer-flag">
+                <div class="mini-flag">
+                    <div class="stripe saffron"></div>
+                    <div class="stripe white"></div>
+                    <div class="stripe green"></div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Easter Egg Elements -->
+    <div id="konami-surprise" class="easter-egg">
+        <div class="surprise-content">
+            <h2>🎉 Secret Celebration Unlocked!</h2>
+            <p>You discovered the Konami Code! Enjoy this special tribute!</p>
+            <div class="special-animation"></div>
+        </div>
+    </div>
+
+    <!-- Touch Gesture Indicators -->
+    <div class="gesture-hints">
+        <div class="swipe-hint">
+            <span>👆 Swipe up to explore</span>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then((registration) => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch((registrationError) => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
